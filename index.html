@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>Food Menu</title>
+</head>
+<body>
+    <h1>Welcome to My Web Page</h1>
+    <select id="menu" onchange="displayOptions()">
+        <option value="menu">Menu</option>
+        <option value="drinks" >Drinks</option>
+        <option value="entrees">Entrees</option>
+        <option value="desserts">Desserts</option>
+    </select>
+    <select id="drinksList"></select>
+    <select id="entreesList"></select>
+    <select id="dessertsList"></select>
+    
+    <script>
+        let menu = {
+            drinks : [
+            "Water", "Tea", "Sweet Tea",
+            "Coke", "Dr. Pepper", "Sprite"
+            ],
+            entrees : [
+            "Hamburger w/ Fries",
+            "Grilled Cheese w/ Tater Tots",
+            "Grilled Chicken w/ Veggies",
+            "Chicken Fried Steak w/ Mashed Potatoes",
+            "Fried Shrimp w/ Coleslaw",
+            "Veggie Plate"
+            ],
+            desserts: [
+            "Cheesecake", "Chocolate Cake", "Snickerdoodle Cookie"
+            ]
+        };
+
+        function displayOptions() {
+            let drinksList = document.getElementById("drinksList");
+            let entreesList = document.getElementById("entreesList");
+            let dessertsList = document.getElementById("dessertsList");
+
+            drinksList.style.display = "none";
+            entreesList.style.display = "none";
+            dessertsList.style.display = "none";
+
+
+            if (document.getElementById("menu").value == "drinks") {
+                drinksList.style.display = "block";
+                for (let i = 0; i < menu.drinks.length; i++) {
+                    let option = document.createElement("option");
+                    option.value = menu.drinks[i];
+                    option.text = menu.drinks[i];
+                    drinksList.appendChild(option)
+                };
+            } else if (document.getElementById("menu").value == "entrees") {
+                entreesList.style.display = "block";
+                for (let i = 0; i < menu.entrees.length; i++) {
+                    let option = document.createElement("option");
+                    option.value = menu.entrees[i];
+                    option.text = menu.entrees[i];
+                    entreesList.appendChild(option)
+                };
+            } else if (document.getElementById("menu").value == "desserts") {
+                dessertsList.style.display = "block";
+                for (let i = 0; i < menu.desserts.length; i++) {
+                    let option = document.createElement("option");
+                    option.value = menu.desserts[i];
+                    option.text = menu.desserts[i];
+                    dessertsList.appendChild(option)
+                };
+            }
+            
+        }
+    </script>
+</body>
+</html>
